@@ -8,7 +8,10 @@ tasks:
       cd cruise0-spa
       npm install
       clear
-      gp url 3000
+      url=$(gp url 3000)
+      echo "$url"
+      echo "$url/cruise0_small.png"
+
 
 ports:
   - port: 8080
