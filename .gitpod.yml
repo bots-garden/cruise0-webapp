@@ -5,6 +5,7 @@ tasks:
       echo "🤔 before"
     init: |
       echo "🚀 init"
+      cd cruise0-spa
       npm install
       clear
       gp url 3000
