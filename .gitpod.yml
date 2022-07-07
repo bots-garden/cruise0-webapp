@@ -1,0 +1,21 @@
+
+tasks:
+  - name: initialize
+    before: |
+      echo "🤔 before"
+    init: |
+      echo "🚀 init"
+      npm install
+      clear
+      gp url 3000
+
+ports:
+  - port: 8080
+    visibility: public
+  - port: 3000
+    visibility: public
+
+vscode:
+  extensions:
+    - pkief.material-icon-theme
+    - aaron-bond.better-comments

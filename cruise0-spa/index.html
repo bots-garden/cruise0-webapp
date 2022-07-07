@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/bulma.min.css">
+
+		<title>🖐️ Hello Cruise0 🛳</title>
+
+	</head>
+	<body>
+
+    <div>
+      <!-- header -->
+      <section class="hero is-bold is-info">
+        <div class="hero-body">
+          <div class="container">
+            <figure class="image is-128x128">
+              <img src="cruise0_small.png">
+            </figure>
+            <h1 class="title is-1">
+              Cruise0 🛳
+            </h1>
+            <h2 class="subtitle">
+              Auth0 Experiments - This is work in progress 🚧
+            </h2>
+          </div>
+          <div class="container" id="profile"></div>
+        </div>
+      </section>
+
+      <!-- navigation bar-->
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a id="login" class="button is-primary">
+                  <strong>Log in</strong>
+                </a>
+                <a id="logout" class="button is-light">
+                  Log out
+                </a>
+                <a id="link" class="button is-link">
+                  Link
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- identities -->
+      <div class="container">
+        <h1 class="title">
+          Identities
+        </h1>
+        <div class="container">
+          <ul id="identities"></ul>
+        </div>
+      </div>
+
+    </div>
+
+		<script src="https://cdn.auth0.com/js/auth0-spa-js/1.20/auth0-spa-js.production.js"></script>
+
+    <script src="./js/auth0-helpers.js"></script>
+    <script src="./js/ui-events.js"></script>
+    <script src="./js/main.js"></script>
+
+	</body>
+</html>
