@@ -49,9 +49,11 @@ node server.js
 
 > **Remarks**:
 > - if you use GitPod, you don't need to run `npm install` (it's done at startup)
-> - you will get something like thid: https://3000-botsgarden-cruise0webap-tgxfzp84of7.ws-us52.gitpod.io/
+> - you will get something like this: https://3000-botsgarden-cruise0webap-55fsz8emboo.ws-eu51.gitpod.io
 > - update the URLs values of the application settings in the Auth0 Admin Dashboard
 > - 🖐️ update the URL in **Branding/ Universal login** (to get the Cruise0 logo on the login panel)
->   - https://3000-botsgarden-cruise0webap-tgxfzp84of7.ws-us52.gitpod.io/cruise0_small.png
+>   - https://3000-botsgarden-cruise0webap-55fsz8emboo.ws-eu51.gitpod.io/cruise0_small.png
+>   - customize the background: https://manage.auth0.com/dashboard/eu/dev-k33g-org/universal-login/customizations
+>     - https://3000-botsgarden-cruise0webap-55fsz8emboo.ws-eu51.gitpod.io/cruise0-background.png
 
 ### Run
