@@ -35,6 +35,16 @@ async function linkAccount({auth0Client, config}) {
   } = await authenticateUser({config: config})
 
   if (!email_verified) {
+
+    const event = new CustomEvent('email_not_verified',
+      {
+        detail: {
+          message:`Account linking is only allowed to a verified account. Please verify your email ${email}.`
+        }
+      }
+    )
+    window.application.dispatchEvent(event)
+
     throw new Error(
       `Account linking is only allowed to a verified account. Please verify your email ${email}.`
     )
@@ -50,6 +60,7 @@ async function linkAccount({auth0Client, config}) {
       link_with: targetUserIdToken,
     }),
   })
+
 }
 
 

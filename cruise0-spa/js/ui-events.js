@@ -1,3 +1,5 @@
+
+
 async function displayButtons({auth0Client, config}) {
   console.log("👷‍♂️ building buttons...")
   const loginButton = document.getElementById("login")
@@ -5,15 +7,18 @@ async function displayButtons({auth0Client, config}) {
   const linkButton = document.getElementById("link")
 
   loginButton.addEventListener("click", (e) => {
+
     console.log("🔐🔓 Login 🤝...")
     e.preventDefault()
     auth0Client.loginWithRedirect()
+
   })
 
   logoutButton.addEventListener("click", (e) => {
     console.log("🔒 Logout 👋...")
     e.preventDefault()
     auth0Client.logout()
+
   })
 
   linkButton.addEventListener("click", async (e) => {
