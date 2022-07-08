@@ -4,6 +4,8 @@ class Profile extends React.Component {
     this.state = {data: {}};
 
     this.profileRef = React.createRef()
+    this.IdentitiesRef = React.createRef()
+
   }
 
   message(msg) {
@@ -15,7 +17,9 @@ class Profile extends React.Component {
     this.config = config
     console.log("ℹ️ [recipient:Profile]", this.auth0Client, this.config )
 
-    this.displayProfileAvatar()
+  }
+
+  componentDidMount() {
 
   }
 
@@ -44,16 +48,22 @@ class Profile extends React.Component {
 
       console.log("🪆 loading identities...")
 
-      //TODO handle identities
-      //displayIdentities({user: user, userProfile: profile, auth0Client: this.auth0Client, })
+      // Refresh identities
+      // Send message to MyApp to tell to refresh identities list
+      console.log("💡 refreshing identities", this)
+
+      this.IdentitiesRef.current.setAuth0Properties({auth0Client:this.auth0Client, config: this.config})
+
+      this.IdentitiesRef.current.refreshIdentities({
+        user: user,
+        userProfile: profile,
+      })
 
 
     } else {
       console.log("🥵 [ui-events(displayProfileAvatar)] the user is not authenticated", user)
       profileElement.style.display = "none";
     }
-
-
 
 
   }
@@ -65,6 +75,11 @@ class Profile extends React.Component {
       <div ref={this.profileRef}>
 
       </div>
+      <hr></hr>
+          <Identities
+            ref={this.IdentitiesRef}
+            messageToParent={(value) => this.message(value)}>
+          </Identities>
     </div>
     );
   }

@@ -1,29 +1,15 @@
 const fetchAuthConfig = () => fetch("/auth_config.json");
 
-window.authors = {
-  name: "Philippe Charrière"
-}
-
-
 class MyApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {data: {}};
 
-    this.InformationRef = React.createRef()
     this.ProfileRef = React.createRef()
     this.ButtonsRef = React.createRef()
   }
 
   async componentDidMount() {
-    // Call the hello method of the Information component
-    this.InformationRef.current.hello()
-
-    // Sent message to the Information component
-    this.InformationRef.current.message({
-      from: "MyApp",
-      text: "Hello World"
-    })
 
     // Sent message to the Profile component
     this.ProfileRef.current.message({
@@ -36,6 +22,7 @@ class MyApp extends React.Component {
       from: "MyApp",
       text: "Hello World"
     })
+
 
     // Initialize the AuthO client
     const response = await fetchAuthConfig()
@@ -63,18 +50,18 @@ class MyApp extends React.Component {
     this.ButtonsRef.current.setAuth0Properties({auth0Client:auth0, config: config})
     this.ProfileRef.current.setAuth0Properties({auth0Client:auth0, config: config})
 
-
+    this.ProfileRef.current.displayProfileAvatar()
   }
 
   message(msg) {
     console.log("📨 [recipient:MyApp]", msg)
+
   }
 
   render() {
     return (
       <div>
           <h1>Cruise0 with Auth0</h1>
-          <MySubTitle />
           <hr></hr>
           <Buttons
             ref={this.ButtonsRef}
@@ -85,11 +72,7 @@ class MyApp extends React.Component {
             ref={this.ProfileRef}
             messageToParent={(value) => this.message(value)}>
           </Profile>
-          <hr></hr>
-          <Information
-            ref={this.InformationRef}
-            messageToParent={(value) => this.message(value)}>
-          </Information>
+
         </div>
     );
   }

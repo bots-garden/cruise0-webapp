@@ -8,7 +8,7 @@ async function unlinkAccount({auth0Client, config, secondaryIdentity}) {
   console.log("👺 secondaryIdentity:", secondaryIdentity)
   const { provider, user_id } = secondaryIdentity
   const accessToken = await auth0Client.getTokenSilently()
-  const { sub } = await auth0.getUser()
+  const { sub } = await auth0Client.getUser()
   await fetch(
     `https://${config.domain}/api/v2/users/${sub}/identities/${provider}/${user_id}`,
     {
@@ -35,17 +35,6 @@ async function linkAccount({auth0Client, config}) {
   } = await authenticateUser({config: config})
 
   if (!email_verified) {
-
-    /*
-    const event = new CustomEvent('email_not_verified',
-      {
-        detail: {
-          message:`Account linking is only allowed to a verified account. Please verify your email ${email}.`
-        }
-      }
-    )
-    window.application.dispatchEvent(event)
-    */
 
     throw new Error(
       `Account linking is only allowed to a verified account. Please verify your email ${email}.`
@@ -126,7 +115,8 @@ let A0Helpers = {
   getUserProfile: getUserProfile,
   getPrimaryIdentity: getPrimaryIdentity,
   authenticateUser: authenticateUser,
-  linkAccount: linkAccount
+  linkAccount: linkAccount,
+  unlinkAccount: unlinkAccount
 }
 
 window.A0Helpers = A0Helpers

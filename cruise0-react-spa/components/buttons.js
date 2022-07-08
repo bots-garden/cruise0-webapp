@@ -23,10 +23,10 @@ class Buttons extends React.Component {
 
   async linkClick() {
     console.log("🔗 Linking...")
-    await A0Helpers.linkAccount({auth0Client: auth0Client, config: config})
+    await A0Helpers.linkAccount({auth0Client: this.auth0Client, config: this.config})
 
     // Refresh identities
-    auth0Client.loginWithRedirect()
+    this.auth0Client.loginWithRedirect()
 
     this.props.messageToParent({from: "Buttons", message:"link"})
   }
