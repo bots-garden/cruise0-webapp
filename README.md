@@ -30,22 +30,30 @@ The file looks like that:
 > - 🖐️ As I use Gipod, I stored the `domain` and the `clientId` in environment variables (in my Gitpod profile) and run `gen-auth-config.sh` to generate the file.
 
 
-### URLs
+### URLs & Run
 
 To get the public url of the application when you serve the webapp from Gitpod, use the below command in a terminal
 
 ```bash
-gp url 3000
+url=$(gp url 3000)
+# public url of the spa
+echo "$url"
+# public url of the logo
+echo "$url/cruise0_small.png"
 ```
-> **Remarks**:
-> - you will get something like thid: https://3000-botsgarden-cruise0demo-bodzhcheirt.ws-eu51.gitpod.io
-> - update the URLs values of the application settings in the Auth0 Admin Dashboard
-> - 🖐️ update the URL in **Branding/ Universal login** (to get the Cruise0 logo on the login panel)
-
-### Run
 
 ```bash
 cd cruise0-spa
 node server.js
 ```
-> **Remark**: if you use GitPod, you don't need to run `npm install` (it's done at startup)
+
+> **Remarks**:
+> - if you use GitPod, you don't need to run `npm install` (it's done at startup)
+> - you will get something like this: https://3000-botsgarden-cruise0webap-55fsz8emboo.ws-eu51.gitpod.io
+> - update the URLs values of the application settings in the Auth0 Admin Dashboard
+> - 🖐️ update the URL in **Branding/ Universal login** (to get the Cruise0 logo on the login panel)
+>   - https://3000-botsgarden-cruise0webap-55fsz8emboo.ws-eu51.gitpod.io/cruise0_small.png
+>   - customize the background: https://manage.auth0.com/dashboard/eu/dev-k33g-org/universal-login/customizations
+>     - https://3000-botsgarden-cruise0webap-55fsz8emboo.ws-eu51.gitpod.io/cruise0-background.png
+
+### Run

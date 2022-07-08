@@ -1,6 +1,25 @@
 const fetchAuthConfig = () => fetch("/auth_config.json");
 
+
 window.onload = async () => {
+
+  window.application = document.getElementById("application")
+  application.addEventListener("MESSAGE", (customEvent) => {
+    console.log(customEvent)
+    document.getElementById("information").innerHTML=customEvent.detail.message
+  })
+
+  application.addEventListener("email_not_verified", (customEvent) => {
+    console.log(customEvent)
+    document.getElementById("information").innerHTML=customEvent.detail.message
+  })
+
+  /*
+    const event = new CustomEvent('MESSAGE', { detail: {message:"🖐️ bonjour"}})
+    window.application.dispatchEvent(event)
+  */
+
+
   const response = await fetchAuthConfig()
   config = await response.json()
   console.log("0️⃣ Cruise0 configuration:", config);
