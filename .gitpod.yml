@@ -7,6 +7,10 @@ tasks:
       echo "🚀 init"
       cd cruise0-spa
       npm install
+      cd ..
+      cd cruise0-react-spa
+      npm install
+      cd ..
       clear
       url=$(gp url 3000)
       echo "$url"
