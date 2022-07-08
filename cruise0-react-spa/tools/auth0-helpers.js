@@ -106,7 +106,7 @@ function getPrimaryIdentity({user, profile}) {
   used by:
   Ui.displayProfileAvatar
 */
-async function getUserProfile({auth0Client, user}) {
+async function getUserProfile({auth0Client, user, config}) {
 
   let userId = user.sub
 

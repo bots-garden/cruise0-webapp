@@ -10,20 +10,37 @@ class Buttons extends React.Component {
   }
 
   loginClick() {
-    const event = new CustomEvent('LOGIN', { detail: {message:"login"}})
-    document.getElementById("root").dispatchEvent(event)
+    console.log("🔐🔓 Login 🤝...")
+    this.auth0Client.loginWithRedirect()
+    this.props.messageToParent({from: "Buttons", message:"login"})
   }
 
   logoutClick() {
-    const event = new CustomEvent('LOGOUT', { detail: {message:"logout"}})
-    document.getElementById("root").dispatchEvent(event)
+    console.log("🔒 Logout 👋...")
+    this.auth0Client.logout()
+    this.props.messageToParent({from: "Buttons", message:"logout"})
   }
 
-  linkClick() {
-    const event = new CustomEvent('LINK', { detail: {message:"link"}})
-    document.getElementById("root").dispatchEvent(event)
+  async linkClick() {
+    console.log("🔗 Linking...")
+    await A0Helpers.linkAccount({auth0Client: auth0Client, config: config})
+
+    // Refresh identities
+    auth0Client.loginWithRedirect()
+
+    this.props.messageToParent({from: "Buttons", message:"link"})
   }
 
+  message(msg) {
+    console.log("📨 [recipient:Buttons]", msg)
+  }
+
+  setAuth0Properties({auth0Client, config}) {
+    this.auth0Client = auth0Client
+    this.config = config
+    console.log("ℹ️ [recipient:Buttons]", this.auth0Client, this.config )
+
+  }
 
   render() {
     return (
